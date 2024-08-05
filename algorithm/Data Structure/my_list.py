@@ -40,4 +40,6 @@ class MyList:
     def insert(self,num:int ,index:int):
         """在中间插入元素"""
         if self._size == self._capacity:
-            self.extend_capacity()            
+            self.extend_capacity()
+        # 将索引index 以及之后的元素都向后移动一位
+        
