@@ -1,4 +1,4 @@
-def backtrace(state:list[int],choices:list[int],selected:list[bool],res:list[list[int]]):
+def backtrack(state:list[int],choices:list[int],selected:list[bool],res:list[list[int]]):
     """回溯算法：全排列I"""
     # 当状态长等于元素数量时，记录解
     if len(state) == len(choices):
@@ -12,7 +12,7 @@ def backtrace(state:list[int],choices:list[int],selected:list[bool],res:list[lis
             selected[i] = True
             state.append(choice)
             # 进行下一轮选择
-            backtrace(state,choices,selected,res)
+            backtrack(state,choices,selected,res)
             # 回退：撤销选择，恢复到之前的状态
             selected[i] = False
             state.pop()
@@ -20,7 +20,7 @@ def backtrace(state:list[int],choices:list[int],selected:list[bool],res:list[lis
 def permutations_i(nums:list[int])->list[list[int]]:
     """全排列 I"""
     res = []
-    backtrace(state=[],choices=nums,selected=[False]*len(nums),res=res)
+    backtrack(state=[],choices=nums,selected=[False]*len(nums),res=res)
     return res
 
 

@@ -1,4 +1,4 @@
-def backtrace(state:list[int],target:int,choices:list[int],start:int,res:list[list[int]]):
+def backtrack(state:list[int],target:int,choices:list[int],start:int,res:list[list[int]]):
     """回溯算法:子集和II"""
     # 子集和等于target时，记录解
     if target == 0:
@@ -18,7 +18,7 @@ def backtrace(state:list[int],target:int,choices:list[int],start:int,res:list[li
         # 尝试：做出选择，更新元素和total
         state.append(choices[i])
         # 进行下一轮选择
-        backtrace(state,target-choices[i],choices,i+1,res)
+        backtrack(state,target-choices[i],choices,i+1,res)
         # 回退：撤销选择，恢复到之前的状态
         state.pop()
 
@@ -28,5 +28,5 @@ def subset_sum_ii(nums:list[int],target:int)->list[list[int]]:
     nums.sort() # 对nums进行排序
     start = 0 # 遍历起始点
     res = [] # 结果列表（子集列表）
-    backtrace(state,target,nums,start,res)
+    backtrack(state,target,nums,start,res)
     return res
